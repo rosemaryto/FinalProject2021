@@ -8,44 +8,166 @@
 </head>
 
 <body>
-  
-    <div id="container">
-        <p>Select your preferred contact method:</p>
-        <div>
-            <input type="radio" id="email" name="crust" value="email">
-            <label for="email">Email</label>
-     
-            <input type="radio" id="phone" name="crust" value="phone">
-            <label for="phone">Phone</label>
-     
-            <input type="radio" id="mail" name="crust" value="mail">
-            <label for="mail">Mail</label>
 
-            <div id="result"></div>
-        </div>
-        </div>
+
+        <p>Select a radio button and get total</p>
+      
+        Crust:
+        <input type="radio" name="crust" value="HandTossed">Hand Tossed
+        <span id="spanHT"></span>
+    
+        <input type="radio" name="crust" value="ThinCrust">Thin Crust
+        <span id="spanTC"></span>
+    
+        <input type="radio" name="crust" value="NewYorkStyle">New York Style
+        <span id="spanNY"></span>
+    
+        <input type="radio" name="crust" value="GlutenFree">Gluten Free
+        <span id="spanGF"></span>
+        <br>
+          
+        <div id="result"></div>
 
 
 <script>
 const $ = function (id) {
   return document.getElementById(id);
 };
+
+
+const handTossed = {
+    sizes: "small",
+    sizem: "medium",
+    sizel: "large",
+    prices: 9.99,
+    pricem: 12.99,
+    pricel: 14.99
+};
+
+function buildHTSelect () {
+  let sbox = document.createElement('select');
+  sbox.setAttribute("id", "htSelect");
+  $('spanHT').appendChild(sbox);
+  //SMALL
+  var small = document.createElement('option');
+  small.setAttribute("value", "small");
+  var a = document.createTextNode(handTossed.sizes + " " + handTossed.prices);
+  small.appendChild(a);
+  $('htSelect').appendChild(small);
+  //MED
+  var med = document.createElement('option');
+  med.setAttribute("value", "medium");
+  var b = document.createTextNode(handTossed.sizem + " " + handTossed.pricem);
+  med.appendChild(b);
+  $('htSelect').appendChild(med);
+  //LARGE
+  var lg = document.createElement('option');
+  lg.setAttribute("value", "large");
+  var c = document.createTextNode(handTossed.sizel + " " + handTossed.pricel);
+  lg.appendChild(c);
+  $('htSelect').appendChild(lg);
+}
+
+const thinCrust = {
+    sizem: "medium",
+    sizel: "large",
+    pricem: 11.99,
+    pricel: 13.99
+};
+
+function buildTCSelect () {
+  let sbox = document.createElement('select');
+  sbox.setAttribute("id", "tcSelect");
+  $('spanTC').appendChild(sbox);
+  //MED
+  var med = document.createElement('option');
+  med.setAttribute("value", "medium");
+  var b = document.createTextNode(thinCrust.sizem + " " + thinCrust.pricem);
+  med.appendChild(b);
+  $('tcSelect').appendChild(med);
+  //LARGE
+  var lg = document.createElement('option');
+  lg.setAttribute("value", "large");
+  var c = document.createTextNode(thinCrust.sizel + " " + thinCrust.pricel);
+  lg.appendChild(c);
+  $('tcSelect').appendChild(lg);
+}
+
+const nyStyle = {
+    sizel: "large",
+    sizexl: "extra large",
+    pricel: 16.99,
+    pricexl: 19.99
+};
+
+function buildNYSelect () {
+  let sbox = document.createElement('select');
+  sbox.setAttribute("id", "nySelect");
+  $('spanNY').appendChild(sbox);
+  //LARGE
+  var lg = document.createElement('option');
+  lg.setAttribute("value", "large");
+  var b = document.createTextNode(nyStyle.sizel + " " + nyStyle.pricel);
+  lg.appendChild(b);
+  $('nySelect').appendChild(lg);
+  //X-LARGE
+  var xlg = document.createElement('option');
+  xlg.setAttribute("value", "extra large");
+  var c = document.createTextNode(nyStyle.sizexl + " " + nyStyle.pricexl);
+  xlg.appendChild(c);
+  $('nySelect').appendChild(xlg);
+}
+
+const glutenFree = {
+    sizes: "small",
+    prices: 10.99
+};
+
+function buildGFSelect () {
+  let sbox = document.createElement('select');
+  sbox.setAttribute("id", "gfSelect");
+  $('spanGF').appendChild(sbox);
+  //SMALL
+  var sml = document.createElement('option');
+  sml.setAttribute("value", "small");
+  var a = document.createTextNode(glutenFree.sizes + " " + glutenFree.prices);
+  sml.appendChild(a);
+  $('gfSelect').appendChild(sml);
+}
+
 var radios = document.querySelectorAll('input[type=radio][name="crust"]');
     radios.forEach(radio => radio.addEventListener('change', () => {
 
-        var ele = document.getElementsByName('crust');
+    var ele = document.getElementsByName('crust');
             for(i = 0; i < ele.length; i++) {
-                if(ele[i].checked && ele[i].value === "email") {
-                $('result').innerHTML = "Gender: email";
-                }
-        if (ele[i].checked && ele[i].value === "mail") {
-            $('result').innerHTML = "Gender: mail";
-        } 
-        
-        if (ele[i].checked && ele[i].value === "phone") {
-            $('result').innerHTML = "Gender: phone";
-        } 
-    }
+                if(ele[i].checked && ele[i].value === "HandTossed") {
+                buildHTSelect();
+                break;
+            } else {
+                $('spanHT').innerHTML = '';
+            }
+            
+            if (ele[i].checked && ele[i].value === "ThinCrust") {
+                buildTCSelect();
+                break;
+            } else {
+                $('spanTC').innerHTML = '';
+            }
+
+            if (ele[i].checked && ele[i].value === "NewYorkStyle"){
+                buildNYSelect();
+                break;
+            } else {
+                $('spanNY').innerHTML = '';
+            }
+
+            if (ele[i].checked && ele[i].value === "GlutenFree"){
+                buildGFSelect();
+                break;
+            } else {
+                $('spanGF').innerHTML = '';
+            }
+        }
     }));
    
 
