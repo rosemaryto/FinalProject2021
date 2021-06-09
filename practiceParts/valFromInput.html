@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Validate Form Input</title>
+
+</head>
+<body>
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<main>
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+        <span id="spanName"></span>
+    </div>
+    <div>
+        <label for="address">Street Address:</label>
+        <input type="text" name="address" id="address">
+        <span id="spanAddress"></span>
+    </div>
+    <div>
+        <label for="city">City:</label>
+        <input type="text" name="city" id="city">
+        <span id="spanCity"></span>
+    </div>
+    <div>
+        <label for="state">State:</label>
+        <input type="text" name="state" id="state" placeholder="XX">
+        <span id="spanState"></span>
+    </div>
+
+    <div>
+        <label for="zip">Zip Code:</label>
+        <input type="text" name="zip" id="zip" placeholder="XXXXX">
+        <span id="spanZip"></span>
+    </div>
+
+    <div>
+        <label for="phone">Mobile Phone:</label>
+        <input type="text" name="phone" id="phone" placeholder="XXX-XXX-XXXX">
+        <span id="spanPhone"></span>
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email">
+        <span id="spanEmail"></span>
+    </div>
+    <div>
+        <label></label>
+        <input type="button" id="save" value="Save">
+        <span></span>
+    </div> 
+
+</main>
+
+
+<script>
+const $ = function (id) {
+    return document.getElementById(id);
+};
+
+const isDate = (date, datePattern) => {
+    if (!datePattern.test(date)) {return false;}
+    const dateParts = date.split("/");
+    const month = parseInt(datePattern[0]);
+    const day = parseInt(dateParts[1]);
+
+    if (month < 1 || month > 12) {return false;}
+    if (day > 31) {return false;}
+    return true;
+};
+
+// $(document).ready( () => {
+window.addEventListener('load', () => {
+    
+    // $("#save").click( () => {
+        $('save').addEventListener('click', () => {
+        // $("span").text(""); //clear error msg
+        $('spanEmail').value = "";
+
+        //get values entered by user
+        const name = document.getElementById('name').value;
+        const address = document.getElementById('address').value;
+        const city = document.getElementById('city').value;
+        const state = document.getElementById('state').value;
+        const zip = document.getElementById('zip').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value;
+
+        //regular expressions for validity testing
+        const namePattern = /^[a-zA-Z]+(?:\s[a-zA-Z]+)+$/;
+        const addressPattern = /^[0-9]+(?:\s[a-zA-Z]+)+$/;
+        const cityPattern = /^[a-zA-Z',.\s-]{1,25}$/;
+        const statePattern = /^[a-zA-Z]{2}$/;
+        const zipPattern = /^\d{5}?$/;
+        const phonePattern = /^\d{3}-\d{3}-\d{4}$/;
+        const emailPattern = /^[\w\.\-]+@[\w\.\-]+\.[a-zA-Z]+$/;
+
+        //check user entries for validity
+        let isValid = true;
+        //NAME
+        if (name === "" || !namePattern.test(name)) {
+            isValid = false;
+            $('spanName').innerHTML = "Please enter";
+        } else {
+            $('spanName').innerHTML = "Thanks";
+        }
+        //ADDRESS
+        if (address === "" || !addressPattern.test(address)) {
+            isValid = false;
+            $('spanAddress').innerHTML = "Please enter";
+        } else {
+            $('spanAddress').innerHTML = "Thanks";
+        }
+        //CITY
+        if (city === "" || !cityPattern.test(city)) {
+            isValid = false;
+            $('spanCity').innerHTML = "Please enter";
+        } else {
+            $('spanCity').innerHTML = "Thanks";
+        }
+        //STATE
+        if (state === "" || !statePattern.test(state)) {
+            isValid = false;
+            $('spanState').innerHTML = "Please enter";
+        } else {
+            $('spanState').innerHTML = "Thanks";
+        }
+        //ZIP
+        if (zip === "" || !zipPattern.test(zip)) {
+            isValid = false;
+            $('spanZip').innerHTML = "Please enter";
+        } else {
+            $('spanZip').innerHTML = "Thanks";
+        }
+        //PHONE
+        if (phone === "" || !phonePattern.test(phone)) {
+            isValid = false;
+            $('spanPhone').innerHTML = "Please enter";
+        } else {
+            $('spanPhone').innerHTML = "Thanks";
+        }
+        //EMAIL
+        if (email === "" || !emailPattern.test(email)) {
+            isValid = false;
+            $('spanEmail').innerHTML = "Please enter";
+
+        } else {
+            $('spanEmail').innerHTML = "Thanks";
+        }
+        document.getElementById('name').focus();
+    });
+    document.getElementById('name').focus();
+
+});
+</script>
+ 
+
+</body>
+</html>
+
