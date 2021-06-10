@@ -78,8 +78,8 @@
 <!--PIZZA CHEESE-->
                   <div class="mb-3">
                     <label for="cheese" class="form-label"><h5>Cheese Options</h5></label>
-                    <select class="form-select" aria-label="Default select example">
-                      <option selected>Normal: no charge</option>
+                    <select id="cheese" class="form-select" aria-label="Default select example" onchange="calculateTotal()">
+                      <option value="0" selected>Normal: no charge</option>
                       <option value="1">Light: no charge</option>
                       <option value="2">Extra: +$2.99</option>
                       <option value="3">Double: +$3.99</option>
@@ -88,8 +88,8 @@
 <!--PIZZA SAUCE-->
                   <div class="mb-3">
                     <label for="sauce" class="form-label"><h5>Sauce Options</h5></label>
-                    <select class="form-select" aria-label="Default select example">
-                      <option selected>Regular Tomato: no charge</option>
+                    <select id="sauce" class="form-select" aria-label="Default select example" onchange="calculateTotal()">
+                      <option value="0" selected>Regular Tomato: no charge</option>
                       <option value="1">Hearty Tomato: +$.99</option>
                       <option value="2">BBQ Sauce: +$1.99</option>
                     </select>

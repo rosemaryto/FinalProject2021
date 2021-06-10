@@ -124,7 +124,6 @@ var radios = document.querySelectorAll('input[type=radio][name="crust"]');
             }
             
             if (ele[i].checked && ele[i].value === "ThinCrust") {
-                
                 buildTCSelect();
                 break;
             } else {
@@ -132,7 +131,6 @@ var radios = document.querySelectorAll('input[type=radio][name="crust"]');
             }
 
             if (ele[i].checked && ele[i].value === "NewYorkStyle"){
-                
                 buildNYSelect();
                 break;
             } else {
@@ -140,7 +138,6 @@ var radios = document.querySelectorAll('input[type=radio][name="crust"]');
             }
 
             if (ele[i].checked && ele[i].value === "GlutenFree"){
-                
                 buildGFSelect();
                 break;
             } else {
@@ -150,7 +147,38 @@ var radios = document.querySelectorAll('input[type=radio][name="crust"]');
     }));
    
 /*---------------------------------TOTAL PRICE FOR PIZZA-------------------------*/
- //TOPPINGS
+//CHEESE
+var cheese_prices = new Array();
+cheese_prices["0"]=0;
+cheese_prices["1"]=0;
+cheese_prices["2"]=2.99;
+cheese_prices["3"]=3.99;
+
+function getCheesePrice() {
+    var pizzaCheesePrice=0;
+    var theForm = document.forms["pizzaForm"];
+    var selectedCheese = theForm.elements["cheese"];
+    pizzaCheesePrice = cheese_prices[selectedCheese.value];
+    return pizzaCheesePrice;
+}
+
+//SAUCE
+var sauce_prices = new Array();
+sauce_prices["0"]=0;
+sauce_prices["1"]=.99;
+sauce_prices["2"]=1.99;
+
+function getSaucePrice() {
+    var pizzaSaucePrice=0;
+    var theForm = document.forms["pizzaForm"];
+    var selectedSauce = theForm.elements["sauce"];
+    pizzaSaucePrice = sauce_prices[selectedSauce.value];
+    return pizzaSaucePrice;
+}
+
+
+
+//TOPPINGS
  function pepperoniPrice() {
     var pepperoniPrice=0;var theForm = document.forms["pizzaForm"];
     var includePepperoni = theForm.elements["Pepperoni"];
@@ -240,7 +268,7 @@ function OnionPrice() {
 }
 
 function calculateTotal() {
-    var pizzaPrice = pepperoniPrice() + sausagePrice() + hamPrice() + baconPrice() + salamiPrice() + peppersPrice() + olivesPrice() + jalapenosPrice() + MushroomsPrice() + PineapplePrice() + OnionPrice();
+    var pizzaPrice = pepperoniPrice() + sausagePrice() + hamPrice() + baconPrice() + salamiPrice() + peppersPrice() + olivesPrice() + jalapenosPrice() + MushroomsPrice() + PineapplePrice() + OnionPrice() + getSaucePrice() + getCheesePrice();
     var finalPizzaPrice = pizzaPrice.toFixed(2);
     
     //display the result
