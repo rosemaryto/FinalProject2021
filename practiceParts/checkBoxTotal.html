@@ -47,61 +47,14 @@
 <!--FORM BEGIN-->
         <form name="pizzaForm" id="pizzForm" class="row">
 
-          <div class="mb-3">
-<!--PIZZA ORDER-->
-            <div class="row align-items-md-stretch">
-              <div class="col-md-6">
-                <div class="h-100 p-5 text-white bg-dark rounded-3">
-                  <h2>Build Your Order</h2>
-                  <h5>Choose your dough</h5>
-<!--PIZZA DOUGH-->
-                  <div class="form-check">
-                    <input type="radio" name="crust" value="HandTossed" id="flexRadioDefault1" class="form-check-input">
-                    <label for="flexRadioDefault1" class="form-check-label">Hand Tossed</label>
-                    <span id="spanHT"></span>
-                  </div>
-                  <div class="form-check">
-                    <input type="radio" name="crust" value="ThinCrust" id="flexRadioDefault1" class="form-check-input">
-                    <label for="flexRadioDefault1" class="form-check-label">Thin Crust</label>
-                    <span id="spanTC"></span>
-                  </div>
-                  <div class="form-check">
-                    <input type="radio" name="crust" value="NewYorkStyle" id="flexRadioDefault1" class="form-check-input">
-                    <label for="flexRadioDefault1" class="form-check-label">New York Style</label>
-                    <span id="spanNY"></span>
-                  </div>
-                  <div class="form-check">
-                    <input type="radio" name="crust" value="GlutenFree" id="flexRadioDefault1" class="form-check-input">
-                    <label for="flexRadioDefault1" class="form-check-label">Gluten Free</label>
-                    <span id="spanGF"></span>
-                  </div>
-<!--PIZZA CHEESE-->
-                  <div class="mb-3">
-                    <label for="cheese" class="form-label"><h5>Cheese Options</h5></label>
-                    <select class="form-select" aria-label="Default select example">
-                      <option selected>Normal: no charge</option>
-                      <option value="1">Light: no charge</option>
-                      <option value="2">Extra: +$2.99</option>
-                      <option value="3">Double: +$3.99</option>
-                    </select>
-                  </div>
-<!--PIZZA SAUCE-->
-                  <div class="mb-3">
-                    <label for="sauce" class="form-label"><h5>Sauce Options</h5></label>
-                    <select class="form-select" aria-label="Default select example">
-                      <option selected>Regular Tomato: no charge</option>
-                      <option value="1">Hearty Tomato: +$.99</option>
-                      <option value="2">BBQ Sauce: +$1.99</option>
-                    </select>
-                  </div>
 <!--PIZZA TOPPINGS-->
                   <h5>Toppings</h5><p>Each topping is $.99 extra</p>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="Pepperoni" onclick="calculateTotal()">
+                    <input class="form-check-input" type="checkbox" id="Pepperoni" value="option2" onclick="calculateTotal()">
                     <label class="form-check-label" for="inlineCheckbox2">Pepperoni</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="Sausage" onclick="calculateTotal()">
+                    <input class="form-check-input" type="checkbox" id="Sausage" value="option2" onclick="calculateTotal()">
                     <label class="form-check-label" for="inlineCheckbox2">Sausage</label>
                   </div>
                   <div class="form-check form-check-inline">
@@ -139,19 +92,18 @@
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" id="Onion" value="option2" onclick="calculateTotal()">
                     <label class="form-check-label" for="inlineCheckbox2">Onion</label>
-                  </div><br><br>
-
-                  <h5><div id="totalPrice" style="color: green;"></div></h5> <br>
+                  </div>
                 </div>
               </div>
-
               
+              <div id="totalPrice"></div> <br>
 
-                  <button type="submit" class="btn btn-primary" onclick="allLetter(document.pizzaForm.name)">Finished Building Pizza</button>
+                  <button type="submit" class="btn btn-primary">Finished Building Pizza</button>
                 </div>
                 </div>
               </div>
             </div>
+
 
           </form>
 <!--END OF FORM-->
@@ -164,7 +116,110 @@
   </main>
 
 
-
+<script>
+    //TOPPINGS
+   function pepperoniPrice() {
+       var pepperoniPrice=0;var theForm = document.forms["pizzaForm"];
+       var includePepperoni = theForm.elements["Pepperoni"];
+       if(includePepperoni.checked==true)
+       {pepperoniPrice=.99;}
+       return pepperoniPrice;
+    }
+   function sausagePrice() {
+       var sausagePrice=0;
+       var theForm = document.forms["pizzaForm"];
+       var includeSausage = theForm.elements["Sausage"];
+       if(includeSausage.checked==true)
+       {sausagePrice=.99;}
+       return sausagePrice;
+   }
+   function hamPrice() {
+       var hamPrice=0;
+       var theForm = document.forms["pizzaForm"];
+       var includeHam = theForm.elements["Ham"];
+       if(includeHam.checked==true)
+       {hamPrice=.99;}
+       return hamPrice;
+   }
+   function baconPrice() {
+       var baconPrice=0;
+       var theForm = document.forms["pizzaForm"];
+       var includeBacon = theForm.elements["Bacon"];
+       if(includeBacon.checked==true)
+       {baconPrice=.99;}
+       return baconPrice;
+   }
+   function salamiPrice() {
+       var salamiPrice=0;
+       var theForm = document.forms["pizzaForm"];
+       var includeSalami = theForm.elements["Salami"];
+       if(includeSalami.checked==true)
+       {salamiPrice=.99;}
+       return salamiPrice;
+   }
+   function peppersPrice() {
+       var peppersPrice=0;
+       var theForm = document.forms["pizzaForm"];
+       var includePeppers = theForm.elements["Peppers"];
+       if(includePeppers.checked==true)
+       {peppersPrice=.99;}
+       return peppersPrice;
+   }
+   function olivesPrice() {
+       var olivesPrice=0;
+       var theForm = document.forms["pizzaForm"];
+       var includeOlives = theForm.elements["Olives"];
+       if(includeOlives.checked==true)
+       {olivesPrice=.99;}
+       return olivesPrice;
+   }
+   function jalapenosPrice() {
+       var jalapenosPrice=0;
+       var theForm = document.forms["pizzaForm"];
+       var includeJalapenos = theForm.elements["Jalapenos"];
+       if(includeJalapenos.checked==true)
+       {jalapenosPrice=.99;}
+       return jalapenosPrice;
+   }
+   function MushroomsPrice() {
+       var MushroomsPrice=0;
+       var theForm = document.forms["pizzaForm"];
+       var includeMushrooms = theForm.elements["Mushrooms"];
+       if(includeMushrooms.checked==true)
+       {MushroomsPrice=.99;}
+       return MushroomsPrice;
+   }
+   function PineapplePrice() {
+       var PineapplePrice=0;
+       var theForm = document.forms["pizzaForm"];
+       var includePineapple = theForm.elements["Pineapple"];
+       if(includePineapple.checked==true)
+       {PineapplePrice=.99;}
+       return PineapplePrice;
+   }
+   function OnionPrice() {
+       var OnionPrice=0;
+       var theForm = document.forms["pizzaForm"];
+       var includeOnion = theForm.elements["Onion"];
+       if(includeOnion.checked==true)
+       {OnionPrice=.99;}
+       return OnionPrice;
+   }
+   
+   function calculateTotal()
+   {
+       //Here we get the total price by calling our function
+       //Each function returns a number so by calling them we add the values they return together
+       var pizzaPrice = pepperoniPrice() + sausagePrice() + hamPrice() + baconPrice() + salamiPrice() + peppersPrice() + olivesPrice() + jalapenosPrice() + MushroomsPrice() + PineapplePrice() + OnionPrice();
+       var finalPizzaPrice = pizzaPrice.toFixed(2);
+       
+       //display the result
+       var divobj = document.getElementById('totalPrice');
+       divobj.style.display='block';
+       divobj.innerHTML = "Total Price For the pizza $"+finalPizzaPrice;
+   
+   }
+</script>
 
 
 

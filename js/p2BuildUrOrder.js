@@ -149,6 +149,105 @@ var radios = document.querySelectorAll('input[type=radio][name="crust"]');
         }
     }));
    
+/*---------------------------------TOTAL PRICE FOR PIZZA-------------------------*/
+ //TOPPINGS
+ function pepperoniPrice() {
+    var pepperoniPrice=0;var theForm = document.forms["pizzaForm"];
+    var includePepperoni = theForm.elements["Pepperoni"];
+    if(includePepperoni.checked==true)
+    {pepperoniPrice=.99;}
+    return pepperoniPrice;
+ }
+function sausagePrice() {
+    var sausagePrice=0;
+    var theForm = document.forms["pizzaForm"];
+    var includeSausage = theForm.elements["Sausage"];
+    if(includeSausage.checked==true)
+    {sausagePrice=.99;}
+    return sausagePrice;
+}
+function hamPrice() {
+    var hamPrice=0;
+    var theForm = document.forms["pizzaForm"];
+    var includeHam = theForm.elements["Ham"];
+    if(includeHam.checked==true)
+    {hamPrice=.99;}
+    return hamPrice;
+}
+function baconPrice() {
+    var baconPrice=0;
+    var theForm = document.forms["pizzaForm"];
+    var includeBacon = theForm.elements["Bacon"];
+    if(includeBacon.checked==true)
+    {baconPrice=.99;}
+    return baconPrice;
+}
+function salamiPrice() {
+    var salamiPrice=0;
+    var theForm = document.forms["pizzaForm"];
+    var includeSalami = theForm.elements["Salami"];
+    if(includeSalami.checked==true)
+    {salamiPrice=.99;}
+    return salamiPrice;
+}
+function peppersPrice() {
+    var peppersPrice=0;
+    var theForm = document.forms["pizzaForm"];
+    var includePeppers = theForm.elements["Peppers"];
+    if(includePeppers.checked==true)
+    {peppersPrice=.99;}
+    return peppersPrice;
+}
+function olivesPrice() {
+    var olivesPrice=0;
+    var theForm = document.forms["pizzaForm"];
+    var includeOlives = theForm.elements["Olives"];
+    if(includeOlives.checked==true)
+    {olivesPrice=.99;}
+    return olivesPrice;
+}
+function jalapenosPrice() {
+    var jalapenosPrice=0;
+    var theForm = document.forms["pizzaForm"];
+    var includeJalapenos = theForm.elements["Jalapenos"];
+    if(includeJalapenos.checked==true)
+    {jalapenosPrice=.99;}
+    return jalapenosPrice;
+}
+function MushroomsPrice() {
+    var MushroomsPrice=0;
+    var theForm = document.forms["pizzaForm"];
+    var includeMushrooms = theForm.elements["Mushrooms"];
+    if(includeMushrooms.checked==true)
+    {MushroomsPrice=.99;}
+    return MushroomsPrice;
+}
+function PineapplePrice() {
+    var PineapplePrice=0;
+    var theForm = document.forms["pizzaForm"];
+    var includePineapple = theForm.elements["Pineapple"];
+    if(includePineapple.checked==true)
+    {PineapplePrice=.99;}
+    return PineapplePrice;
+}
+function OnionPrice() {
+    var OnionPrice=0;
+    var theForm = document.forms["pizzaForm"];
+    var includeOnion = theForm.elements["Onion"];
+    if(includeOnion.checked==true)
+    {OnionPrice=.99;}
+    return OnionPrice;
+}
+
+function calculateTotal() {
+    var pizzaPrice = pepperoniPrice() + sausagePrice() + hamPrice() + baconPrice() + salamiPrice() + peppersPrice() + olivesPrice() + jalapenosPrice() + MushroomsPrice() + PineapplePrice() + OnionPrice();
+    var finalPizzaPrice = pizzaPrice.toFixed(2);
+    
+    //display the result
+    var divobj = document.getElementById('totalPrice');
+    divobj.style.display='block';
+    divobj.innerHTML = "Total Price For the pizza $"+finalPizzaPrice;
+}
 
   
   
