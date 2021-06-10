@@ -147,6 +147,9 @@ var radios = document.querySelectorAll('input[type=radio][name="crust"]');
     }));
    
 /*---------------------------------TOTAL PRICE FOR PIZZA-------------------------*/
+//CRUST
+
+
 //CHEESE
 var cheese_prices = new Array();
 cheese_prices["0"]=0;
@@ -175,8 +178,6 @@ function getSaucePrice() {
     pizzaSaucePrice = sauce_prices[selectedSauce.value];
     return pizzaSaucePrice;
 }
-
-
 
 //TOPPINGS
  function pepperoniPrice() {
