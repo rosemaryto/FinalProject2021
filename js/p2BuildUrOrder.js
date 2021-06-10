@@ -103,11 +103,18 @@ function buildGFSelect () {
   sml.appendChild(a);
   $('gfSelect').appendChild(sml);
 }
+ 
 
 var radios = document.querySelectorAll('input[type=radio][name="crust"]');
     radios.forEach(radio => radio.addEventListener('change', () => {
 
+        //CLEAR SPAN TAGS
+        for (i = 0; i < document.getElementsByTagName('span').length; i++) {
+            document.getElementsByTagName('span')[i].innerHTML = '';
+        }
+
     var ele = document.getElementsByName('crust');
+
             for(i = 0; i < ele.length; i++) {
                 if(ele[i].checked && ele[i].value === "HandTossed") {
                 buildHTSelect();
@@ -117,6 +124,7 @@ var radios = document.querySelectorAll('input[type=radio][name="crust"]');
             }
             
             if (ele[i].checked && ele[i].value === "ThinCrust") {
+                
                 buildTCSelect();
                 break;
             } else {
@@ -124,6 +132,7 @@ var radios = document.querySelectorAll('input[type=radio][name="crust"]');
             }
 
             if (ele[i].checked && ele[i].value === "NewYorkStyle"){
+                
                 buildNYSelect();
                 break;
             } else {
@@ -131,6 +140,7 @@ var radios = document.querySelectorAll('input[type=radio][name="crust"]');
             }
 
             if (ele[i].checked && ele[i].value === "GlutenFree"){
+                
                 buildGFSelect();
                 break;
             } else {
