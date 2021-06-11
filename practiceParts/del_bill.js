@@ -28,7 +28,7 @@ function buildTextBox () {
 }
 
 
-/* -------------------------------------------VALIDATE INPUTS---------------------------------------------- */
+/* -------------------------------------------VALIDATE DELIVERY INPUTS---------------------------------------------- */
 const $ = function (id) {
   return document.getElementById(id);
 };
@@ -45,12 +45,12 @@ window.addEventListener('load', () => {
       $('spanEmail').value = "";
 
       //get values entered by user
-      const name = $('name').value; 
+      const name = $('name1').value; 
       const addressType = $('addressType').value;
-      const address = $('address').value;
-      const city = $('city').value;
-      const state = $('state').value;
-      const zip = $('zip').value;
+      const address = $('address1').value;
+      const city = $('city1').value;
+      const state = $('state1').value;
+      const zip = $('zip1').value;
       const phone = $('phone').value;
       const email = $('email').value;
 
@@ -124,7 +124,26 @@ window.addEventListener('load', () => {
       }
       // document.getElementById('name').focus();
   });
-  $('name').focus();
+  $('name1').focus();
 
 });
 
+/* -------------------------------------------VALIDATE BILLING INPUTS---------------------------------------------- */
+function addressFunction() {
+    if ($("same").checked) {
+        $("name2").value = $('name1').value;
+        $("address2").value = $("address1").value;
+        $("aptNumber2").value = $("aptNumber1").value;
+        $("city2").value = $("city1").value;
+        $("state2").value = $("state1").value;
+        $("zip2").value = $("zip1").value;
+
+    } else {
+        $('name2').value = "";
+        $("address2").value = "";
+        $("aptNumber2").value = "";
+        $("city2").value = "";
+        $("state2").value = "";
+        $("zip2").value = "";
+    }
+}

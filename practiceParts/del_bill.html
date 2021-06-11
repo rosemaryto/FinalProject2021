@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap-5.0.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/bootstrap-5.0.1-dist/css/bootstrap.css">
     
     
     <title>Delivery Location</title>
@@ -37,7 +37,7 @@
       </div>
       <div class="overflow-hidden" style="max-height: 30vh;">
         <div class="container px-5">
-          <img src="img/pizza.jpg" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+          <img src="/img/pizza.jpg" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
 <!--NAME-->
           <div class="mb-3 col-12">
             <label for="name" class="form-label">Name</label>
-            <input type="text" name="name" id="name" class="form-control">
+            <input type="text" name="name" id="name1" class="form-control">
             <span id="spanName" style="color: red;"></span>
           </div>
 <!--ADDRESS TYPE-->
@@ -78,30 +78,30 @@
 <!--STREET ADDRESS-->
           <div class="mb-3 col-8">
             <label for="address" class="form-label">Street Address</label>
-            <input type="text" name="address" id="address" class="form-control">
+            <input type="text" name="address" id="address1" class="form-control">
             <span id="spanAddress" style="color: red;"></span>
           </div>
 <!--APT-->
           <div class="mb-3 col-4">
             <label for="aptNumber" class="form-label">Apt.Ste.Rm</label>
-            <input type="text" class="form-control" id="exampleInputEmail1">
+            <input type="text" class="form-control" id="aptNumber1">
           </div>
 <!--CITY-->
           <div class="mb-3 col-6">
             <label for="city" class="form-label">City</label>
-            <input type="text" name="city" id="city" class="form-control">
+            <input type="text" name="city" id="city1" class="form-control">
             <span id="spanCity" style="color: red;"></span>
           </div>
 <!--STATE-->
           <div class="mb-3 col-2">
             <label for="state" class="form-label">State</label>
-            <input type="text" name="state" id="state" class="form-control" placeholder="XX">
+            <input type="text" name="state" id="state1" class="form-control" placeholder="XX">
             <span id="spanState" style="color: red;"></span>
           </div>
 <!--ZIP CODE-->
           <div class="mb-3 col-4">
             <label for="zip" class="form-label">Zip Code</label>
-            <input type="text" name="zip" id="zip" class="form-control" placeholder="XXXXX">
+            <input type="text" name="zip" id="zip1" class="form-control" placeholder="XXXXX">
             <span id="spanZip" style="color: red;"></span>
           </div>
 <!--PHONE-->
@@ -121,6 +121,88 @@
 <!--INSERT PIZZA ORDER ABOVE -->
         
 <!--INSERT BILLING INFO BELOW -->
+<!--PIZZA BILLING INFORMAITON-->
+<div class="col-md-6">
+    <div class="h-100 p-5 bg-light border rounded-3 row">
+      <h2>Billing Information</h2>
+  <!--SAME AS DELIVER CHECK BOX-->
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="same" name="same" onchange="addressFunction()">
+        <label class="form-check-label" for="inlineCheckbox2">Same as delivery information</label>
+      </div>
+  <!--NAME-->
+      <div class="mb-3 col-12">
+        <label for="name" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="name2">
+      </div>
+  <!--STREET ADDRESS-->
+      <div class="mb-3 col-9">
+        <label for="address" class="form-label">Street Address</label>
+        <input type="text" class="form-control" id="address2">
+      </div>
+  <!--APT-->
+      <div class="mb-3 col-3">
+        <label for="aptNumber" class="form-label">Apt.Ste.Rm</label>
+        <input type="text" class="form-control" id="aptNumber2">
+      </div>
+  <!--CITY-->                  
+      <div class="mb-3 col-6">
+        <label for="city" class="form-label">City</label>
+        <input type="text" class="form-control" id="city2">
+      </div>
+  <!--STATE-->
+      <div class="mb-3 col-2">
+        <label for="state" class="form-label">State</label>
+        <input type="text" class="form-control" id="state2">
+      </div>
+  <!--ZIP CODE-->
+      <div class="mb-3 col-4">
+        <label for="zip" class="form-label">Zip Code</label>
+        <input type="text" class="form-control" id="zip2">
+      </div>
+  <!--CC #-->
+      <div class="mb-3 col-12">
+        <label for="creditCard" class="form-label">Credit Card Number</label>
+        <input type="text" class="form-control" id="exampleInputEmail1">
+      </div>
+  <!--CVC CODE-->
+      <div class="mb-3 col-12">
+        <label for="cvs" class="form-label">CVC Code</label>
+        <input type="number" class="form-control" id="exampleInputEmail1">
+      </div>
+  <!--EXP MONTH-->
+      <div class="mb-3">
+        <label for="cheese" class="form-label">Expiration Month</label>
+        <select class="form-select" aria-label="Default select example">
+  <!--DELETE SELECTED OPTION IF NOT REQUIRED-->
+          <option selected>01-January</option>
+          <option value="1">01-January</option>
+          <option value="2">02-February</option>
+          <option value="3">03-March</option>
+          <option value="4">04-April</option>
+          <option value="5">05-May</option>
+          <option value="6">06-June</option>
+          <option value="7">07-July</option>
+          <option value="8">08-August</option>
+          <option value="9">09-September</option>
+          <option value="10">10-October</option>
+          <option value="11">11-November</option>
+          <option value="12">12-December</option>
+        </select>
+      </div>
+  <!--EXP YEAR-->
+      <div class="mb-3">
+        <label for="cheese" class="form-label">Expiration Year</label>
+        <select class="form-select" aria-label="Default select example">
+  <!--DELETE SELECTED OPTION IF NOT REQUIRED-->
+          <option selected>2021</option>
+          <option value="1">2022</option>
+          <option value="2">2023</option>
+          <option value="3">2024</option>
+          <option value="4">2025</option>
+          <option value="5">2026</option>
+        </select>
+      </div>
 <!--INSERT BILLING INFO ABOVE -->
                   <input type="button" id="saveSubmit" value="Finished Building Pizza" class="btn btn-primary">
                 </div>
@@ -147,6 +229,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="bootstrap-5.0.1-dist/js/bootstrap.js"></script>
-    <script src="js/p1DelivLoc.js"></script>
+    <script src="del_bill.js"></script>
 </body>
 </html>
