@@ -16,6 +16,7 @@ const handTossed = {
 function buildHTSelect () {
   let sbox = document.createElement('select');
   sbox.setAttribute("id", "htSelect");
+  sbox.setAttribute("onchange", "calculateTotal()");
   $('spanHT').appendChild(sbox);
   //SMALL
   var small = document.createElement('option');
@@ -47,6 +48,7 @@ const thinCrust = {
 function buildTCSelect () {
   let sbox = document.createElement('select');
   sbox.setAttribute("id", "tcSelect");
+  sbox.setAttribute("onchange", "calculateTotal()");
   $('spanTC').appendChild(sbox);
   //MED
   var med = document.createElement('option');
@@ -72,6 +74,7 @@ const nyStyle = {
 function buildNYSelect () {
   let sbox = document.createElement('select');
   sbox.setAttribute("id", "nySelect");
+  sbox.setAttribute("onchange", "calculateTotal()");
   $('spanNY').appendChild(sbox);
   //LARGE
   var lg = document.createElement('option');
@@ -95,6 +98,7 @@ const glutenFree = {
 function buildGFSelect () {
   let sbox = document.createElement('select');
   sbox.setAttribute("id", "gfSelect");
+  sbox.setAttribute("onchange", "calculateTotal()");
   $('spanGF').appendChild(sbox);
   //SMALL
   var sml = document.createElement('option');
@@ -148,7 +152,57 @@ var radios = document.querySelectorAll('input[type=radio][name="crust"]');
    
 /*---------------------------------TOTAL PRICE FOR PIZZA-------------------------*/
 //CRUST
-
+/*hand tossed*/
+var ht_prices = new Array();
+    ht_prices["small"]=9.99;
+    ht_prices["medium"]=12.99;
+    ht_prices["large"]=14.99;
+    
+function htPrice() {
+    var htPrice=0;
+    var theForm = document.forms["pizzaForm"];
+    var htCrust = theForm.elements["htSelect"];
+    htPrice = ht_prices[htCrust.value];
+    return htPrice;
+}
+       
+/*thin crust*/
+var tc_prices = new Array();
+    tc_prices["medium"]=11.99;
+    tc_prices["large"]=13.99;
+    
+function tcPrice() {
+    var tcPrice=0;
+    var theForm = document.forms["pizzaForm"];
+    var tcCrust = theForm.elements["tcSelect"];
+    tcPrice = tc_prices[tcCrust.value];
+    return tcPrice;
+}
+    
+/*ny crust*/
+var ny_prices = new Array();
+    ny_prices["large"]=16.99;
+    ny_prices["extra large"]=19.99;
+    
+function nyPrice() {
+    var nyPrice=0;
+    var theForm = document.forms["pizzaForm"];
+    var nyCrust = theForm.elements["nySelect"];
+    nyPrice = ny_prices[nyCrust.value];
+    return nyPrice;
+}
+    
+/*gf crust*/
+var gf_prices = new Array();
+    gf_prices["small"]=10.99;
+    
+function gfPrice() {
+    var gfPrice=0;
+    var theForm = document.forms["pizzaForm"];
+    var gfCrust = theForm.elements["gfSelect"];
+    gfPrice = gf_prices[gfCrust.value];
+    return gfPrice;
+}
 
 //CHEESE
 var cheese_prices = new Array();
@@ -269,7 +323,7 @@ function OnionPrice() {
 }
 
 function calculateTotal() {
-    var pizzaPrice = pepperoniPrice() + sausagePrice() + hamPrice() + baconPrice() + salamiPrice() + peppersPrice() + olivesPrice() + jalapenosPrice() + MushroomsPrice() + PineapplePrice() + OnionPrice() + getSaucePrice() + getCheesePrice();
+    var pizzaPrice = pepperoniPrice() + sausagePrice() + hamPrice() + baconPrice() + salamiPrice() + peppersPrice() + olivesPrice() + jalapenosPrice() + MushroomsPrice() + PineapplePrice() + OnionPrice() + getSaucePrice() + getCheesePrice() + htPrice();
     var finalPizzaPrice = pizzaPrice.toFixed(2);
     
     //display the result
