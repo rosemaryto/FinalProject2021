@@ -52,8 +52,8 @@
 <!--NAME-->
           <div class="mb-3 col-12">
             <label for="name" class="form-label">Name</label>
-            <input type="text" name="name" id="name" class="form-control">
-            <span id="spanName" style="color: red;"></span>
+            <input type="text" name="name" id="name1" class="form-control">
+            <p id="spanName" style="color: red;"></p>
           </div>
 <!--ADDRESS TYPE-->
           <div class="mb-3 col-5">
@@ -68,7 +68,7 @@
               <option value="6">Dorm</option>
               <option value="other" id="addressOther">Other</option>
             </select>
-            <span id="spanAddressType" style="color: red;"></span>
+            <p id="spanAddressType" style="color: red;"></p>
           </div>
 
           <!--JAVASCRIPT FOR OTHER SELECTION-->
@@ -78,51 +78,237 @@
 <!--STREET ADDRESS-->
           <div class="mb-3 col-8">
             <label for="address" class="form-label">Street Address</label>
-            <input type="text" name="address" id="address" class="form-control">
-            <span id="spanAddress" style="color: red;"></span>
+            <input type="text" name="address" id="address1" class="form-control">
+            <p id="spanAddress" style="color: red;"></p>
           </div>
 <!--APT-->
           <div class="mb-3 col-4">
             <label for="aptNumber" class="form-label">Apt.Ste.Rm</label>
-            <input type="text" class="form-control" id="exampleInputEmail1">
+            <input type="text" class="form-control" id="aptNumber1">
           </div>
 <!--CITY-->
           <div class="mb-3 col-6">
             <label for="city" class="form-label">City</label>
-            <input type="text" name="city" id="city" class="form-control">
-            <span id="spanCity" style="color: red;"></span>
+            <input type="text" name="city" id="city1" class="form-control">
+            <p id="spanCity" style="color: red;"></p>
           </div>
 <!--STATE-->
           <div class="mb-3 col-2">
             <label for="state" class="form-label">State</label>
-            <input type="text" name="state" id="state" class="form-control" placeholder="XX">
-            <span id="spanState" style="color: red;"></span>
+            <input type="text" name="state" id="state1" class="form-control" placeholder="XX">
+            <p id="spanState" style="color: red;"></p>
           </div>
 <!--ZIP CODE-->
           <div class="mb-3 col-4">
             <label for="zip" class="form-label">Zip Code</label>
-            <input type="text" name="zip" id="zip" class="form-control" placeholder="XXXXX">
-            <span id="spanZip" style="color: red;"></span>
+            <input type="text" name="zip" id="zip1" class="form-control" placeholder="XXXXX">
+            <p id="spanZip" style="color: red;"></p>
           </div>
 <!--PHONE-->
           <div class="mb-3 col-6">
             <label for="phone" class="form-label">Phone Number</label>
             <input type="text" name="phone" id="phone" class="form-control" placeholder="XXX-XXX-XXXX">
-            <span id="spanPhone" style="color: red;"></span>
+            <p id="spanPhone" style="color: red;"></p>
           </div>
 <!--EMAIL-->
           <div class="mb-3 col-6">
             <label for="email" class="form-label">Email</label>
             <input type="text" name="email" id="email" class="form-control">
-            <span id="spanEmail" style="color: red;"></span>
+            <p id="spanEmail" style="color: red;"></p>
           </div>
 
-<!--INSERT PIZZA ORDER BELOW -->
-<!--INSERT PIZZA ORDER ABOVE -->
-        
-<!--INSERT BILLING INFO BELOW -->
-<!--INSERT BILLING INFO ABOVE -->
-                  <input type="button" id="saveSubmit" value="Finished Building Pizza" class="btn btn-primary">
+
+<!--<input type="button" id="saveSubmit" value="Next" class="btn btn-primary" onclick="document.getElementById('myDIV').style.visibility = 'visible'">-->
+
+<!--PIZZA ORDER-->
+<div id="myDIV">
+<div class="row align-items-md-stretch">
+  <div class="col-md-6">
+    <div class="h-100 p-5 text-white bg-dark rounded-3">
+      <h2>Build Your Order</h2>
+      <h5>Choose your dough</h5>
+<!--PIZZA DOUGH-->
+      <div class="form-check">
+        <input type="radio" name="crust" value="HandTossed" id="flexRadioDefault1" class="form-check-input">
+        <label for="flexRadioDefault1" class="form-check-label">Hand Tossed</label>
+        <span id="spanHT"></span>
+      </div>
+      <div class="form-check">
+        <input type="radio" name="crust" value="ThinCrust" id="flexRadioDefault1" class="form-check-input">
+        <label for="flexRadioDefault1" class="form-check-label">Thin Crust</label>
+        <span id="spanTC"></span>
+      </div>
+      <div class="form-check">
+        <input type="radio" name="crust" value="NewYorkStyle" id="flexRadioDefault1" class="form-check-input">
+        <label for="flexRadioDefault1" class="form-check-label">New York Style</label>
+        <span id="spanNY"></span>
+      </div>
+      <div class="form-check">
+        <input type="radio" name="crust" value="GlutenFree" id="flexRadioDefault1" class="form-check-input">
+        <label for="flexRadioDefault1" class="form-check-label">Gluten Free</label>
+        <span id="spanGF"></span>
+      </div>
+<!--PIZZA CHEESE-->
+      <div class="mb-3">
+        <label for="cheese" class="form-label"><h5>Cheese Options</h5></label>
+        <select id="cheese" class="form-select" aria-label="Default select example" onchange="calculateTotal()">
+          <option value="0" selected>Normal: no charge</option>
+          <option value="1">Light: no charge</option>
+          <option value="2">Extra: +$2.99</option>
+          <option value="3">Double: +$3.99</option>
+        </select>
+      </div>
+<!--PIZZA SAUCE-->
+      <div class="mb-3">
+        <label for="sauce" class="form-label"><h5>Sauce Options</h5></label>
+        <select id="sauce" class="form-select" aria-label="Default select example" onchange="calculateTotal()">
+          <option value="0" selected>Regular Tomato: no charge</option>
+          <option value="1">Hearty Tomato: +$.99</option>
+          <option value="2">BBQ Sauce: +$1.99</option>
+        </select>
+      </div>
+<!--PIZZA TOPPINGS-->
+      <h5>Toppings</h5><p>Each topping is $.99 extra</p>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="Pepperoni" onclick="calculateTotal()">
+        <label class="form-check-label" for="inlineCheckbox2">Pepperoni</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="Sausage" onclick="calculateTotal()">
+        <label class="form-check-label" for="inlineCheckbox2">Sausage</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="Ham" value="option2" onclick="calculateTotal()">
+        <label class="form-check-label" for="inlineCheckbox2">Ham</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="Bacon" value="option2" onclick="calculateTotal()">
+        <label class="form-check-label" for="inlineCheckbox2">Bacon</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="Salami" value="option2" onclick="calculateTotal()">
+        <label class="form-check-label" for="inlineCheckbox2">Salami</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="Peppers" value="option2" onclick="calculateTotal()">
+        <label class="form-check-label" for="inlineCheckbox2">Peppers</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="Olives" value="option2" onclick="calculateTotal()">
+        <label class="form-check-label" for="inlineCheckbox2">Olives</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="Jalapenos" value="option2" onclick="calculateTotal()">
+        <label class="form-check-label" for="inlineCheckbox2">Jalapenos</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="Mushrooms" value="option2" onclick="calculateTotal()">
+        <label class="form-check-label" for="inlineCheckbox2">Mushrooms</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="Pineapple" value="option2" onclick="calculateTotal()">
+        <label class="form-check-label" for="inlineCheckbox2">Pineapple</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="Onion" value="option2" onclick="calculateTotal()">
+        <label class="form-check-label" for="inlineCheckbox2">Onion</label>
+      </div><br><br>
+
+      <h5><div id="totalPrice" style="color: yellow;"></div></h5> <br>
+    </div>
+  </div>
+
+<!--PIZZA BILLING INFORMAITON-->
+<div class="col-md-6">
+<div class="h-100 p-5 bg-light border rounded-3 row">
+<h2>Billing Information</h2>
+<!--SAME AS DELIVER CHECK BOX-->
+<div class="form-check form-check-inline">
+<input class="form-check-input" type="checkbox" id="same" name="same" onchange="addressFunction()">
+<label class="form-check-label" for="inlineCheckbox2">Same as delivery information</label>
+</div>
+<!--NAME-->
+<div class="mb-3 col-12">
+<label for="name" class="form-label">Full Name</label>
+<input type="text" class="form-control" id="name2">
+<p id="spanName2" style="color: red;"></p>
+</div>
+<!--STREET ADDRESS-->
+<div class="mb-3 col-9">
+<label for="address" class="form-label">Street Address</label>
+<input type="text" class="form-control" id="address2">
+<p id="spanAddress2" style="color: red;"></p>
+</div>
+<!--APT-->
+<div class="mb-3 col-3">
+<label for="aptNumber" class="form-label">Apt.Ste.Rm</label>
+<input type="text" class="form-control" id="aptNumber2">
+</div>
+<!--CITY-->                  
+<div class="mb-3 col-6">
+<label for="city" class="form-label">City</label>
+<input type="text" class="form-control" id="city2">
+<p id="spanCity2" style="color: red;"></p>
+</div>
+<!--STATE-->
+<div class="mb-3 col-2">
+<label for="state" class="form-label">State</label>
+<input type="text" class="form-control" id="state2">
+<p id="spanState2" style="color: red;"></p>
+</div>
+<!--ZIP CODE-->
+<div class="mb-3 col-4">
+<label for="zip" class="form-label">Zip Code</label>
+<input type="text" class="form-control" id="zip2">
+<p id="spanZip2" style="color: red;"></p>
+</div>
+<!--CC #-->
+<div class="mb-3 col-12">
+<label for="creditCard" class="form-label">Credit Card Number</label>
+<input type="text" class="form-control" id="creditCard">
+<p id="spanCC" style="color: green;"></p>
+</div>
+<!--CVC CODE-->
+<div class="mb-3 col-12">
+<label for="cvc" class="form-label">CVC Code</label>
+<input type="text" class="form-control" id="cvc">
+<p id="spanCVC" style="color: red;"></p>
+</div>
+<!--EXP MONTH-->
+<div class="mb-3">
+<label for="cheese" class="form-label">Expiration Month</label>
+<select class="form-select" aria-label="Default select example">
+<!--DELETE SELECTED OPTION IF NOT REQUIRED-->
+<option selected>01-January</option>
+<option value="1">01-January</option>
+<option value="2">02-February</option>
+<option value="3">03-March</option>
+<option value="4">04-April</option>
+<option value="5">05-May</option>
+<option value="6">06-June</option>
+<option value="7">07-July</option>
+<option value="8">08-August</option>
+<option value="9">09-September</option>
+<option value="10">10-October</option>
+<option value="11">11-November</option>
+<option value="12">12-December</option>
+</select>
+</div>
+<!--EXP YEAR-->
+<div class="mb-3">
+<label for="cheese" class="form-label">Expiration Year</label>
+<select class="form-select" aria-label="Default select example">
+<!--DELETE SELECTED OPTION IF NOT REQUIRED-->
+<option selected>2021</option>
+<option value="1">2022</option>
+<option value="2">2023</option>
+<option value="3">2024</option>
+<option value="4">2025</option>
+<option value="5">2026</option>
+</select>
+</div>
+
+<input type="button" id="saveSubmit" value="Finished Building Pizza" class="btn btn-primary">
                 </div>
               </div>
             </div>
@@ -131,16 +317,12 @@
 <!--END OF FORM-->
       </div>
     </div>
-
+  </div><!--MYdiv-->
     <footer class="pt-3 mt-4 text-muted border-top">
       &copy; 2021
     </footer>
   </div>
 </main>
-
-
-
-
 
 
   <!--LINKS TO BOOTSTRAP-->
