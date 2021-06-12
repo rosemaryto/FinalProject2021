@@ -184,20 +184,30 @@ window.addEventListener('load', () => {
           $('spanCVC').innerHTML = "";
       }
 
-      //CC
-      if (cc === "" || !visaPattern.test(cc) || !masterPattern.test(cc) || !amexPattern.test(cc)) {
+      //CC VISA
+      if (cc === "" || !visaPattern.test(cc)) {
           isValid = false;
-          $('spanCC').innerHTML = "Valid CC Required";
-      } else if (cc === visaPattern.test(cc)) {
+          $('spanCC').innerHTML = "Valid CVC Required";
+      } else {
         $('spanCC').innerHTML = "Visa";
       }
+
+      //CC MASTERCARD
+      if (cc === "" || !masterPattern.test(cc)) {
+          isValid = false;
+          $('spanCC').innerHTML = "Valid CC Required";
+      } else {
+        $('spanCC').innerHTML = "MasterCard";
+      }
+
+      //CC AMEX
+      if (cc === "" || !amexPattern.test(cc)) {
+          isValid = false;
+          $('spanCC').innerHTML = "Valid CVC Required";
+      } else {
+        $('spanCC').innerHTML = "American Express";
+      }
       
-      //4444444444444
-
-
-
-
-
   });
   $('name1').focus();
 
@@ -223,7 +233,3 @@ function addressFunction() {
         $("zip2").value = "";
     }
 }
-
-//CREDIT CARD VALIDATION
-
-//CVC CODE
