@@ -95,6 +95,7 @@ function buildNYSelect () {
 
  
 var cake_prices = new Array();
+cake_prices["Round6"]=0;
 cake_prices["Round8"]=0;
 cake_prices["Round10"]=0;
 cake_prices["Round12"]=0;
@@ -107,16 +108,16 @@ function getCakePrice(){
     //We loop through each radio buttons
     for (var i = 0; i < selectedCake.length; i++) {
         //if the radio button is checked
-        // if (selectedCake[i].checked){
             if (selectedCake[i].checked) {
             //We get the selected Items value
             //For example cake_prices["Round8".value]"
-            cakePrice = cake_prices[selectedCake[i].value + getNYPrice()];
+            cakePrice = cake_prices[selectedCake[i].value];
             //break out of this loop after match
+            break;      
     }
-    //We return the cake price
-    return cakePrice;
 }
+ //We return the cake price
+ return cakePrice;
 }
 
 
@@ -134,20 +135,19 @@ function getFillingPrice() {
     return cakeFillingPrice;
 }
 
+
+//ny style
 var ny_prices = new Array();
 ny_prices["large"]=16.99;
 ny_prices["extralarge"]=19.99;
 
 function getNYPrice() {
-    var nyPrice=0;
+    var nyPrice = 0;
     var theForm = document.forms["cakeform"];
-    var selectedCake = theForm.elements["selectedcake"];
-    var selectSpan = document.getElementsById('spanNY');
-    var selectDough = document.getElementById('nySelect');
-    nyPrice = ny_prices[selectDough.value];
+    var selectNY = theForm.elements["nyStyle"];
+    nyPrice = ny_prices[selectNY.value];
     return nyPrice;
 }
-
 
 
         
@@ -155,7 +155,7 @@ function calculateTotal()
 {
     //Here we get the total price by calling our function
     //Each function returns a number so by calling them we add the values they return together
-    var cakePrice = getCakePrice() + getFillingPrice();
+    var cakePrice = getCakePrice() + getFillingPrice() + getNYPrice();
     
     //display the result
     var divobj = document.getElementById('totalPrice');
