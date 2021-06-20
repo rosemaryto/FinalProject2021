@@ -588,5 +588,5 @@ function myFunction() {
       //display the result
       var divobj = document.getElementById('totalPrice');
       divobj.style.display='block';
-      divobj.innerHTML = "Total Price For the pizza $"+finalPizzaPrice;
+      divobj.innerHTML = "Pizza Total: $"+finalPizzaPrice;
   }
