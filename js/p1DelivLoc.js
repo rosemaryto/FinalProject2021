@@ -208,6 +208,21 @@ window.addEventListener('load', () => {
         $('spanCC').innerHTML = "American Express";
       }
       
+
+
+      //DATE VALIDATION
+      const form = $('pizzaForm');
+      const expMonth = $('expMonth');
+      const expYear = $('expYear');
+      const expError = $('expError');
+      const month = expMonth.value;
+      const year = expYear.value;
+      const expDate = new Date(year + '-' + month + '-01');
+      if (expDate < new Date()) {
+        expError.innerHTML = "Card has expired";
+    } else {
+        expError.innerHTML = "";
+      }
   });
   $('name1').focus();
 

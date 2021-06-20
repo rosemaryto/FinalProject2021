@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body onload='hideTotal()'>
+    <div id="wrap">
+        <form action="" id="cakeform" onsubmit="return false;">
+        <div>
+            <div class="cont_order">
+               <fieldset>
+                <legend>Make your cake!</legend>
+                <label >Size Of the Cake</label><br>
+                <label class='radiolabel'><input type="radio"  name="selectedcake" value="Round6" onclick="calculateTotal()"/>Round cake 6" -  serves 8 people ($20)</label><span id="spanNY"></span><br/>
+                <label class='radiolabel'><input type="radio"  name="selectedcake" value="Round8" onclick="calculateTotal()" />Round cake 8" - serves 12 people ($25)</label><br/>
+                <label class='radiolabel'><input type="radio"  name="selectedcake" value="Round10" onclick="calculateTotal()" />Round cake 10" - serves 16 people($35)</label><br/>
+                <label class='radiolabel'><input type="radio"  name="selectedcake" value="Round12" onclick="calculateTotal()" />Round cake 12" - serves 30 people($75)</label><br/>
+                <br/>
+                <label >Filling</label>
+         
+                <select id="filling" name='filling' onchange="calculateTotal()">
+                <option value="None">Select Filling</option>
+                <option value="Lemon">Lemon($5)</option>
+                <option value="Custard">Custard($5)</option>
+               </select>
+                <br/>
+
+                <div id="totalPrice"></div>
+                
+                </fieldset>
+            </div>
+            
+            <input type='submit' id='submit' value='Submit' onclick="calculateTotal()" />
+        </div>  
+       </form>
+	</div><!--End of wrap-->
+
+    <script>
+    
+    const $ = function (id) {
+            return document.getElementById(id);
+        };
+        
+        const nyStyle = {
+        sizel: "Large",
+        sizexl: "Extra Large",
+        pricel: 16.99,
+        pricexl: 19.99
+    };
+
+
+function buildNYSelect () {
+    let sbox = document.createElement('select');
+    sbox.setAttribute("id", "nySelect");
+    sbox.setAttribute("name", "nyStyle");
+    sbox.setAttribute("onchange", "calculateTotal()");
+    $('spanNY').appendChild(sbox);
+    //LARGE
+    var lg = document.createElement('option');
+    lg.setAttribute("value", "large");
+    var b = document.createTextNode(nyStyle.sizel + " " + nyStyle.pricel);
+    lg.appendChild(b);
+    $('nySelect').appendChild(lg);
+    //X-LARGE
+    var xlg = document.createElement('option');
+    xlg.setAttribute("value", "extralarge");
+    var c = document.createTextNode(nyStyle.sizexl + " " + nyStyle.pricexl);
+    xlg.appendChild(c);
+    $('nySelect').appendChild(xlg);
+  }
+
+
+  var radios = document.querySelectorAll('input[type=radio][name="selectedcake"]');
+      radios.forEach(radio => radio.addEventListener('change', () => {
+  
+          //CLEAR SPAN TAGS
+          for (i = 0; i < document.getElementsByTagName('span').length; i++) {
+              document.getElementsByTagName('span')[i].innerHTML = '';
+          }
+  
+      var ele = document.getElementsByName('selectedcake');
+  
+              for(i = 0; i < ele.length; i++) {
+                  if(ele[i].checked && ele[i].value === "Round6") {
+                      buildNYSelect();
+                  break;
+              } else {
+                  $('spanNY').innerHTML = '';
+              }
+            }
+      }));
+
+ 
+var cake_prices = new Array();
+cake_prices["Round8"]=0;
+cake_prices["Round10"]=0;
+cake_prices["Round12"]=0;
+
+
+function getCakePrice(){
+    var cakePrice = 0;
+    var theForm = document.forms["cakeform"];
+    var selectedCake = theForm.elements["selectedcake"];
+    //We loop through each radio buttons
+    for (var i = 0; i < selectedCake.length; i++) {
+        //if the radio button is checked
+        // if (selectedCake[i].checked){
+            if (selectedCake[i].checked) {
+            //We get the selected Items value
+            //For example cake_prices["Round8".value]"
+            cakePrice = cake_prices[selectedCake[i].value + getNYPrice()];
+            //break out of this loop after match
+    }
+    //We return the cake price
+    return cakePrice;
+}
+}
+
+
+ var filling_prices= new Array();
+ filling_prices["None"]=0;
+ filling_prices["Lemon"]=5;
+ filling_prices["Custard"]=5;
+
+
+function getFillingPrice() {
+    var cakeFillingPrice=0;
+    var theForm = document.forms["cakeform"];
+    var selectedFilling = theForm.elements["filling"];
+    cakeFillingPrice = filling_prices[selectedFilling.value];
+    return cakeFillingPrice;
+}
+
+var ny_prices = new Array();
+ny_prices["large"]=16.99;
+ny_prices["extralarge"]=19.99;
+
+function getNYPrice() {
+    var nyPrice=0;
+    var theForm = document.forms["cakeform"];
+    var selectedCake = theForm.elements["selectedcake"];
+    var selectSpan = document.getElementsById('spanNY');
+    var selectDough = document.getElementById('nySelect');
+    nyPrice = ny_prices[selectDough.value];
+    return nyPrice;
+}
+
+
+
+        
+function calculateTotal()
+{
+    //Here we get the total price by calling our function
+    //Each function returns a number so by calling them we add the values they return together
+    var cakePrice = getCakePrice() + getFillingPrice();
+    
+    //display the result
+    var divobj = document.getElementById('totalPrice');
+    divobj.style.display='block';
+    divobj.innerHTML = "Total Price For the Cake $"+cakePrice;
+
+}
+
+function hideTotal()
+{
+    var divobj = document.getElementById('totalPrice');
+    divobj.style.display='none';
+}
+    </script>
+
+</body>
+</html>
