@@ -275,23 +275,24 @@ function myFunction() {
   function buildHTSelect () {
     let sbox = document.createElement('select');
     sbox.setAttribute("id", "htSelect");
+    sbox.setAttribute("name", "htStyle");
     sbox.setAttribute("onchange", "calculateTotal()");
     $('spanHT').appendChild(sbox);
     //SMALL
     var small = document.createElement('option');
-    small.setAttribute("value", "small");
+    small.setAttribute("value", "smallHT");
     var a = document.createTextNode(handTossed.sizes + " " + handTossed.prices);
     small.appendChild(a);
     $('htSelect').appendChild(small);
     //MED
     var med = document.createElement('option');
-    med.setAttribute("value", "medium");
+    med.setAttribute("value", "mediumHT");
     var b = document.createTextNode(handTossed.sizem + " " + handTossed.pricem);
     med.appendChild(b);
     $('htSelect').appendChild(med);
     //LARGE
     var lg = document.createElement('option');
-    lg.setAttribute("value", "large");
+    lg.setAttribute("value", "largeHT");
     var c = document.createTextNode(handTossed.sizel + " " + handTossed.pricel);
     lg.appendChild(c);
     $('htSelect').appendChild(lg);
@@ -307,23 +308,24 @@ function myFunction() {
   function buildTCSelect () {
     let sbox = document.createElement('select');
     sbox.setAttribute("id", "tcSelect");
+    sbox.setAttribute("name", "tcStyle");
     sbox.setAttribute("onchange", "calculateTotal()");
     $('spanTC').appendChild(sbox);
     //MED
     var med = document.createElement('option');
-    med.setAttribute("value", "medium");
+    med.setAttribute("value", "mediumTC");
     var b = document.createTextNode(thinCrust.sizem + " " + thinCrust.pricem);
     med.appendChild(b);
     $('tcSelect').appendChild(med);
     //LARGE
     var lg = document.createElement('option');
-    lg.setAttribute("value", "large");
+    lg.setAttribute("value", "largeTC");
     var c = document.createTextNode(thinCrust.sizel + " " + thinCrust.pricel);
     lg.appendChild(c);
     $('tcSelect').appendChild(lg);
   }
   
-  const nyStyle = {
+  const nyDough = {
       sizel: "Large",
       sizexl: "Extra Large",
       pricel: 16.99,
@@ -333,18 +335,19 @@ function myFunction() {
   function buildNYSelect () {
     let sbox = document.createElement('select');
     sbox.setAttribute("id", "nySelect");
+    sbox.setAttribute("name", "nyStyle");
     sbox.setAttribute("onchange", "calculateTotal()");
     $('spanNY').appendChild(sbox);
     //LARGE
     var lg = document.createElement('option');
-    lg.setAttribute("value", "large");
-    var b = document.createTextNode(nyStyle.sizel + " " + nyStyle.pricel);
+    lg.setAttribute("value", "largeNY");
+    var b = document.createTextNode(nyDough.sizel + " " + nyDough.pricel);
     lg.appendChild(b);
     $('nySelect').appendChild(lg);
     //X-LARGE
     var xlg = document.createElement('option');
-    xlg.setAttribute("value", "extra large");
-    var c = document.createTextNode(nyStyle.sizexl + " " + nyStyle.pricexl);
+    xlg.setAttribute("value", "extralargeNY");
+    var c = document.createTextNode(nyDough.sizexl + " " + nyDough.pricexl);
     xlg.appendChild(c);
     $('nySelect').appendChild(xlg);
   }
@@ -357,11 +360,12 @@ function myFunction() {
   function buildGFSelect () {
     let sbox = document.createElement('select');
     sbox.setAttribute("id", "gfSelect");
+    sbox.setAttribute("name", "gfStyle");
     sbox.setAttribute("onchange", "calculateTotal()");
     $('spanGF').appendChild(sbox);
     //SMALL
     var sml = document.createElement('option');
-    sml.setAttribute("value", "small");
+    sml.setAttribute("value", "smallGF");
     var a = document.createTextNode(glutenFree.sizes + " " + glutenFree.prices);
     sml.appendChild(a);
     $('gfSelect').appendChild(sml);
@@ -411,57 +415,89 @@ function myFunction() {
      
   /*---------------------------------TOTAL PRICE FOR PIZZA-------------------------*/
   //CRUST
-  /*hand tossed*/
-  var ht_prices = new Array();
-      ht_prices["small"]=9.99;
-      ht_prices["medium"]=12.99;
-      ht_prices["large"]=14.99;
+  var dough_prices = new Array();
+dough_prices["largeNY"]=16.99;
+dough_prices["extralargeNY"]=19.99;
+dough_prices["smallHT"]=9.99;
+dough_prices["mediumHT"]=12.99;
+dough_prices["largeHT"]=14.99;
+dough_prices["mediumTC"]=11.99;
+dough_prices["largeTC"]=13.99;
+dough_prices["smallGF"]=10.99;
+
+function getDoughPrice() {
+        var doughPrice = 0;
+        var theForm = document.forms["pizzaForm"];
+        var selectHT = theForm.elements["htStyle"];
+        var selectTC = theForm.elements["tcStyle"];
+        var selectNY = theForm.elements["nyStyle"];
+        var selectGF = theForm.elements["gfStyle"];
+
+        if (selectNY) {
+            doughPrice = dough_prices[selectNY.value];
+        }
+        if (selectHT) {
+            doughPrice = dough_prices[selectHT.value];
+        }
+        if (selectTC) {
+            doughPrice = dough_prices[selectTC.value];
+        }
+        if (selectGF) {
+            doughPrice = dough_prices[selectGF.value];
+        }
+            return doughPrice;
+};
+//   /*hand tossed*/
+//   var ht_prices = new Array();
+//       ht_prices["small"]=9.99;
+//       ht_prices["medium"]=12.99;
+//       ht_prices["large"]=14.99;
       
-  function htPrice() {
-      var htPrice=0;
-      var theForm = document.forms["pizzaForm"];
-      var htCrust = theForm.elements["htSelect"];
-      htPrice = ht_prices[htCrust.value];
-      return htPrice;
-  }
+//   function htPrice() {
+//       var htPrice=0;
+//       var theForm = document.forms["pizzaForm"];
+//       var htCrust = theForm.elements["htSelect"];
+//       htPrice = ht_prices[htCrust.value];
+//       return htPrice;
+//   }
          
-  /*thin crust*/
-  var tc_prices = new Array();
-      tc_prices["medium"]=11.99;
-      tc_prices["large"]=13.99;
+//   /*thin crust*/
+//   var tc_prices = new Array();
+//       tc_prices["medium"]=11.99;
+//       tc_prices["large"]=13.99;
       
-  function tcPrice() {
-      var tcPrice=0;
-      var theForm = document.forms["pizzaForm"];
-      var tcCrust = theForm.elements["tcSelect"];
-      tcPrice = tc_prices[tcCrust.value];
-      return tcPrice;
-  }
+//   function tcPrice() {
+//       var tcPrice=0;
+//       var theForm = document.forms["pizzaForm"];
+//       var tcCrust = theForm.elements["tcSelect"];
+//       tcPrice = tc_prices[tcCrust.value];
+//       return tcPrice;
+//   }
       
-  /*ny crust*/
-  var ny_prices = new Array();
-      ny_prices["large"]=16.99;
-      ny_prices["extra large"]=19.99;
+//   /*ny crust*/
+//   var ny_prices = new Array();
+//       ny_prices["large"]=16.99;
+//       ny_prices["extra large"]=19.99;
       
-  function nyPrice() {
-      var nyPrice=0;
-      var theForm = document.forms["pizzaForm"];
-      var nyCrust = theForm.elements["nySelect"];
-      nyPrice = ny_prices[nyCrust.value];
-      return nyPrice;
-  }
+//   function nyPrice() {
+//       var nyPrice=0;
+//       var theForm = document.forms["pizzaForm"];
+//       var nyCrust = theForm.elements["nySelect"];
+//       nyPrice = ny_prices[nyCrust.value];
+//       return nyPrice;
+//   }
       
-  /*gf crust*/
-  var gf_prices = new Array();
-      gf_prices["small"]=10.99;
+//   /*gf crust*/
+//   var gf_prices = new Array();
+//       gf_prices["small"]=10.99;
       
-  function gfPrice() {
-      var gfPrice=0;
-      var theForm = document.forms["pizzaForm"];
-      var gfCrust = theForm.elements["gfSelect"];
-      gfPrice = gf_prices[gfCrust.value];
-      return gfPrice;
-  }
+//   function gfPrice() {
+//       var gfPrice=0;
+//       var theForm = document.forms["pizzaForm"];
+//       var gfCrust = theForm.elements["gfSelect"];
+//       gfPrice = gf_prices[gfCrust.value];
+//       return gfPrice;
+//   }
   
   //CHEESE
   var cheese_prices = new Array();
@@ -582,7 +618,7 @@ function myFunction() {
   }
   
   function calculateTotal() {
-      var pizzaPrice = pepperoniPrice() + sausagePrice() + hamPrice() + baconPrice() + salamiPrice() + peppersPrice() + olivesPrice() + jalapenosPrice() + MushroomsPrice() + PineapplePrice() + OnionPrice() + getSaucePrice() + getCheesePrice() + htPrice();
+      var pizzaPrice = getDoughPrice() + pepperoniPrice() + sausagePrice() + hamPrice() + baconPrice() + salamiPrice() + peppersPrice() + olivesPrice() + jalapenosPrice() + MushroomsPrice() + PineapplePrice() + OnionPrice() + getSaucePrice() + getCheesePrice();
       var finalPizzaPrice = pizzaPrice.toFixed(2);
       
       //display the result
