@@ -415,7 +415,7 @@ function myFunction() {
      
   /*---------------------------------TOTAL PRICE FOR PIZZA-------------------------*/
   //CRUST
-  var dough_prices = new Array();
+var dough_prices = new Array();
 dough_prices["largeNY"]=16.99;
 dough_prices["extralargeNY"]=19.99;
 dough_prices["smallHT"]=9.99;
@@ -447,57 +447,7 @@ function getDoughPrice() {
         }
             return doughPrice;
 };
-//   /*hand tossed*/
-//   var ht_prices = new Array();
-//       ht_prices["small"]=9.99;
-//       ht_prices["medium"]=12.99;
-//       ht_prices["large"]=14.99;
-      
-//   function htPrice() {
-//       var htPrice=0;
-//       var theForm = document.forms["pizzaForm"];
-//       var htCrust = theForm.elements["htSelect"];
-//       htPrice = ht_prices[htCrust.value];
-//       return htPrice;
-//   }
-         
-//   /*thin crust*/
-//   var tc_prices = new Array();
-//       tc_prices["medium"]=11.99;
-//       tc_prices["large"]=13.99;
-      
-//   function tcPrice() {
-//       var tcPrice=0;
-//       var theForm = document.forms["pizzaForm"];
-//       var tcCrust = theForm.elements["tcSelect"];
-//       tcPrice = tc_prices[tcCrust.value];
-//       return tcPrice;
-//   }
-      
-//   /*ny crust*/
-//   var ny_prices = new Array();
-//       ny_prices["large"]=16.99;
-//       ny_prices["extra large"]=19.99;
-      
-//   function nyPrice() {
-//       var nyPrice=0;
-//       var theForm = document.forms["pizzaForm"];
-//       var nyCrust = theForm.elements["nySelect"];
-//       nyPrice = ny_prices[nyCrust.value];
-//       return nyPrice;
-//   }
-      
-//   /*gf crust*/
-//   var gf_prices = new Array();
-//       gf_prices["small"]=10.99;
-      
-//   function gfPrice() {
-//       var gfPrice=0;
-//       var theForm = document.forms["pizzaForm"];
-//       var gfCrust = theForm.elements["gfSelect"];
-//       gfPrice = gf_prices[gfCrust.value];
-//       return gfPrice;
-//   }
+
   
   //CHEESE
   var cheese_prices = new Array();
