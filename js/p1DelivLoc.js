@@ -278,6 +278,11 @@ function myFunction() {
     sbox.setAttribute("name", "htStyle");
     sbox.setAttribute("onchange", "calculateTotal()");
     $('spanHT').appendChild(sbox);
+    //BLANK
+    var blank = document.createElement('option');
+    var aBlank = document.createTextNode(" ");
+    blank.appendChild(aBlank);
+    $('htSelect').appendChild(blank);
     //SMALL
     var small = document.createElement('option');
     small.setAttribute("value", "smallHT");
@@ -311,6 +316,11 @@ function myFunction() {
     sbox.setAttribute("name", "tcStyle");
     sbox.setAttribute("onchange", "calculateTotal()");
     $('spanTC').appendChild(sbox);
+    //BLANK
+    var blank = document.createElement('option');
+    var aBlank = document.createTextNode(" ");
+    blank.appendChild(aBlank);
+    $('tcSelect').appendChild(blank);
     //MED
     var med = document.createElement('option');
     med.setAttribute("value", "mediumTC");
@@ -338,6 +348,11 @@ function myFunction() {
     sbox.setAttribute("name", "nyStyle");
     sbox.setAttribute("onchange", "calculateTotal()");
     $('spanNY').appendChild(sbox);
+    //BLANK
+    var blank = document.createElement('option');
+    var aBlank = document.createTextNode(" ");
+    blank.appendChild(aBlank);
+    $('nySelect').appendChild(blank);
     //LARGE
     var lg = document.createElement('option');
     lg.setAttribute("value", "largeNY");
@@ -363,6 +378,11 @@ function myFunction() {
     sbox.setAttribute("name", "gfStyle");
     sbox.setAttribute("onchange", "calculateTotal()");
     $('spanGF').appendChild(sbox);
+    //BLANK
+    var blank = document.createElement('option');
+    var aBlank = document.createTextNode(" ");
+    blank.appendChild(aBlank);
+    $('gfSelect').appendChild(blank);
     //SMALL
     var sml = document.createElement('option');
     sml.setAttribute("value", "smallGF");
